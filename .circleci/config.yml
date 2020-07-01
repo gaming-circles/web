@@ -5,25 +5,24 @@ orbs:
 
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.6.6-node
-    executor: ruby/default
-    steps:
+      docker:
+        - image: circleci/ruby:2.6.6-node
+      executor: ruby/default
       steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          cache-key: yarn.lock
-          pkg-manager: yarn
-      - run:
-          name: Code Has Arrived
-          command: |
-            ls -al
-            echo '^^^That should look familiar^^^'
+        - checkout
+        - ruby/install-deps
+        - node/install-packages:
+            cache-key: yarn.lock
+            pkg-manager: yarn
+        - run:
+            name: Code Has Arrived
+            command: |
+              ls -al
+              echo '^^^That should look familiar^^^'
   test:
       parallelism: 3
       docker:
-        - image: cimg/ruby:2.7-node
+        - image: cimg/ruby:2.6.6-node
         - image: circleci/postgres:9.5-alpine
           environment:
             POSTGRES_USER: circleci-demo-ruby
