@@ -8,8 +8,18 @@ jobs:
       - image: circleci/ruby:2.6.6-stretch-node
     executor: ruby/default
     steps:
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
       - checkout
       - run:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      - run:
+          name: Code Has Arrived
+          command: |
+            ls -al
+            echo '^^^That should look familiar^^^'
