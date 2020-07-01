@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec_junit_formatter' # For CircleCI
   gem "formulaic"
   gem "launchy"
   gem "timecop"
